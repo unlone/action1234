@@ -49,11 +49,14 @@ jobs:
 
       - name: Create release
         uses: actions/create-release@v1
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.compute-tag.outputs.tagname }} #6 (Explanation)
-          commit: main
-          artifacts: './release_file.txt'
+          tag_name: ${{ steps.compute-tag.outputs.tagname }}
+          release_name: ${{ steps.compute-tag.outputs.tagname }}
+          draft: false
+          prerelease: false
+  
       
 
       # Runs a single command using the runners shell
