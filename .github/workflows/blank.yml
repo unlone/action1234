@@ -48,7 +48,7 @@ jobs:
         run: echo ${{ steps.compute-tag.outputs.tagname }} >> ./release_file.txt #5 (Explanation)
 
       - name: Create release
-        uses: ncipollo/release-action@v1
+        uses: actions/create-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.compute-tag.outputs.tagname }} #6 (Explanation)
